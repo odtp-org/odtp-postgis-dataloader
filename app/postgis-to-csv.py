@@ -30,7 +30,6 @@ if query.startswith('"') and query.endswith('"'):
 print(f'CONNECTING HOST: {host}:{port}/{database}')
 with engine.connect() as conn:
     print(f'QUERY: {query}')
-    df = pd.read_sql(text(query), conn)
     gdf = gpd.read_postgis(text(query), conn, geom_col=geom_col)
 
 engine.dispose()
@@ -38,4 +37,4 @@ engine.dispose()
 # Storing CSV
 output_filename = os.path.join("/odtp/odtp-output/", os.environ["OUTPUT_FILENAME"])
 print(f'EXPORTING TO: {output_filename}')
-df.to_csv(output_filename, index=False)
+gdf.to_csv(output_filename, index=False)

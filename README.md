@@ -13,7 +13,7 @@ Description of the component
 ```
 odtp new odtp-component-entry \
 --name odtp-postgis-dataloader \
---component-version 0.1.0 \
+--component-version 0.1.1 \
 --repository https://github.com/odtp-org/odtp-postgis-dataloader
 ``` 
 
