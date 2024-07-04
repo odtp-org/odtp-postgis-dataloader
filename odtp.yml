@@ -1,89 +1,90 @@
 # This file should contain basic component information for your component.
-component-name: Component Name
-component-author: Component Author
-component-version: Component Version
-component-repository: Component Repository
-component-license: Component License
-component-type: ephemeral or interactive
-component-description: Description
+component-name: odtp-postgis-dataloader
+component-author: Carlos Vivar Rios 
+component-version: 0.1.0
+component-repository: https://github.com/odtp-org/odtp-postgis-dataloader
+component-license: AGPL 3.0
+component-type: ephemeral
+component-description: Dataloader for postgis. It accepts a query and download it as csv. 
 tags:
-  - tag1
-  - tag2
+  - datloader
+  - postgis
+  - csv
 
 # Information about the tools
-tools:
-  - tool-name: tool's name
-    tool-author: Tool's author
-    tool-version: Tool version
-    tool-repository: Tool's repository
-    tool-license: Tool's license
+tools: null
 
 # If your tool require some secrets token to be passed as ENV to the component
 # This won't be traced in MongoDB
 secrets:
-  - name: Key of the argument
-  - description: Description of the secret
+  - name: LOGIN_USER
+    description: User in the PostgreSQL database
+  - name: PASSWORD
+    description: Password in the PostgreSQL database
 
 # If the tool requires some building arguments such as Matlab license
-build-args:
-  - name: Key of the argument
-  - description: Descriptio of the building argument
-  - secret: Bool
+build-args: null
 
 # If applicable, ports exposed by the component
 # Include Name, Description, and Port Value for each port
-ports:
-  - name: PORT A
-    description: Description of Port A
-    port-value: XXXX
-  - name: PORT B
-    description: Description of Port B
-    port-value: YYYY
+ports: null
 
 # If applicable, parameters exposed by the component
 # Datatype can be str, int, float, or bool.
 parameters:
-  - name: PARAMETER A
-    default-value: DEFAULT_VALUE_A
-    datatype: DATATYPE_A
-    description: Description of Parameter A
-    parameter-bounds: # Boundaries for int and float datatype
-      - 0 # Lower bound
-      - inf # Upper bound
-    options: null
-    allow-custom-value: false # If true the user can add a custom value out of parameter-bounds, or options
-  - name: PARAMETER B
-    default-value: DEFAULT_VALUE_B
-    datatype: DATATYPE_B
-    description: Description of Parameter B
+  - name: HOST
+    default-value: null
+    datatype: str
+    description: PostgreSQL HOST
     parameter-bounds: null
-    options: # If your string parameter is limited to a few option, please list them here. 
-      - OptionA
-      - OptionB
-      - OptionC
-    allow-custom-value: false # If true the user can add a custom value out of parameter-bounds, or options
+    options: null
+    allow-custom-value: true 
+  - name: PORT
+    default-value: null
+    datatype: int
+    description: PostgreSQL PORT
+    parameter-bounds: null
+    options: null
+    allow-custom-value: true 
+  - name: DATABASE
+    default-value: null
+    datatype: str
+    description: PostgreSQL database to be queried
+    parameter-bounds: null
+    options: null
+    allow-custom-value: true 
+  - name: QUERY
+    default-value: null
+    datatype: str
+    description: 'Query. Please wrap it between `"`: `"QUERY"`'
+    parameter-bounds: null
+    options: null
+    allow-custom-value: true
+  - name: OUTPUT_FILENAME
+    default-value: output.csv
+    datatype: str
+    description: Output file name
+    parameter-bounds: null
+    options: null
+    allow-custom-value: true
+  - name: GEOM_COL
+    default-value: geometry
+    datatype: str
+    description: Column where to find the geometry
+    parameter-bounds: null
+    options: null
+    allow-custom-value: true
 
 # If applicable, data-input list required by the component
-data-inputs:
-  - name: INPUT A
-    type: TYPE_A # Folder or filetype
-    path: VALUE_A  
-    description: Description of Input A
-  - name: INPUT B
-    type: TYPE_B # Folder or filetype
-    path: VALUE_B  
-    description: Description of Input B
+data-inputs: null
 
 # If applicable, data-output list produced by the component
 data-output:
   - name: OUTPUT A
-    type: TYPE_A # Folder or filetype
-    path: VALUE_A
-    description: Description of Output A
-  - name: OUTPUT B
-    type: TYPE_B # Folder or filetype
-    path: VALUE_B
-    description: Description of Output B
+    type: csv
+    path: "*.csv"
+    description: CSV file containing the results from the QUERY 
+
 
 # If applicable, path to schemas to perform semantic validation.
 # Still under development. Ignore.
@@ -92,4 +93,4 @@ schema-output: PATH_TO_OUTPUT_SCHEMA
 
 # If applicable, define devices needed such as GPU.
 devices:
-  gpu: Bool
+  gpu: false
