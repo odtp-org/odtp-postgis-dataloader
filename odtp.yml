@@ -1,7 +1,7 @@
 # This file should contain basic component information for your component.
 component-name: odtp-postgis-dataloader
 component-author: Carlos Vivar Rios & Ye Hong
-component-version: 0.1.1
+component-version: v0.1.2
 component-repository: https://github.com/odtp-org/odtp-postgis-dataloader
 component-license: AGPL 3.0
 component-type: ephemeral

@@ -13,7 +13,7 @@ Description of the component
 ```
 odtp new odtp-component-entry \
 --name odtp-postgis-dataloader \
---component-version 0.1.1 \
+--component-version v0.1.2 \
 --repository https://github.com/odtp-org/odtp-postgis-dataloader
 ``` 
 
@@ -98,6 +98,13 @@ rm -r test
 
 
 ## CHANGELOG
+
+- v0.1.2
+    - Client updated to v0.1.2
+    - Github action for dockerhub publishing inlcuded
+    - Added fix when building on windows
+
+- v0.1.1
 
 - v0.1.0
     - Ubuntu fixed at 22.04
